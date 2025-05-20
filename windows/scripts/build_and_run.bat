@@ -1,4 +1,4 @@
-if not exist ../../local_server/target/debug/local_server (
+if not exist ../../local_server/target/release/local_server (
     echo "Building local server"
     cd ../../local_server
     cargo build --release
@@ -6,7 +6,7 @@ if not exist ../../local_server/target/debug/local_server (
 )
 
 echo "Assembling build environment"
-node ./build.js
+node build.js
 
 echo "Running..."
 cd ../build

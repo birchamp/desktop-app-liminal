@@ -6,45 +6,78 @@ This repo pulls together several libraries and projects into a single app. The p
 
 ```
 pankosmia
--- pithekos (currently we borrow its templates, webfonts and setup)
--- pankosmia_web
+-- webfonts-core
+-- resources-core
 -- desktop-app-liminal
 -- core-client-dashboard repository
 -- core-client-settings repository
 -- core-client-workspace repository
 -- core-client-content repository
 -- core-client-remote-repos repository
--- xenizo-parallel-gospels
 -- core-client-i18n-editor repository
 ```
 
 *It Should Just Work* if your pankosmia directory is under `repos` under your user directory, ie `/home/myname/repos/pankosmia` in Linux.
 
-Pankosmia_web serves compiled files from the `build` directory of each client, so you need to build each client:
+The local_server (pankosmia_web) serves compiled files from the `build` directory of each client, so you need to build each client:
 ```
 # In each client repo, NOT this repo!
 npm install
 npm run build
 ```
 
-You also need to build pankosmia_web:
-# In pankosmia_web repo, NOT this repo!
-Linux or Windows:
-```text
-cargo build --release
-```
-MacOS:
-```text
-OPENSSL_STATIC=yes cargo build --release
-```
-
-## Installing the builder (back to _this_ repo!)
+## Installing the builder (back to _this_ repo -- desktop-app-liminal)
 **This is at the root of the repo**
 ```text
 npm install
 ```
 
-## Building
+## Environment requirements for this repo (desktop-app-liminal)
+
+### Tested on Ubuntu 24.04 with:
+- npm 9.2.0
+- node 18.19.1
+- rustc 1.83.0 -- curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+### Tested on Windows 11 with:
+- npm 10.7.0
+- node 18.20.4
+- rustc 1.83.0 -- See https://www.rust-lang.org/tools/install
+- cmake 3.31.0 -- Version 3 is required. See https://cmake.org/download/
+
+### Tested on MacOS with:
+- npm 10.7.0 (tested on Monterey)
+- npm 10.8.2 (tested on Sequoia)
+- node 18.20.4
+- rustc 1.86.0 -- curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+- OpenSSL 3.5.0 -- brew install openssl
+
+## Running the server in dev mode
+Linux:
+```text
+cd linux/scripts
+./build_and_run.bsh
+```
+(may need chmod +x build_and_run.bsh)
+
+Windows:
+```text
+cd windows/scripts
+.\build_and_run.bat
+```
+MacOS:
+```text
+cd macos/scripts
+./build_and_run.zsh
+```
+
+## Building for release)
+
+1. Delete the contents of local_server/target/release
+2. Run the server in dev mode.
+3. Stop the server (optional)
+4. Then proceed below.
+
 Linux:
 ```text
 cd linux/scripts

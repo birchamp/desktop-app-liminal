@@ -15,4 +15,5 @@ node ./build.js
 
 echo "Running..."
 cd ../build
+chmod 755 liminal.zsh
 ./liminal.zsh

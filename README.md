@@ -68,6 +68,7 @@ cd windows/scripts
 MacOS:
 ```text
 cd macos/scripts
+chmod +x build_and_run.zsh
 ./build_and_run.zsh
 ```
 

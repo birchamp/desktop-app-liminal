@@ -6,15 +6,15 @@ This repo pulls together several libraries and projects into a single app. The p
 
 ```
 pankosmia
--- webfonts-core
--- resources-core
--- desktop-app-liminal
+-- core-client-content repository
 -- core-client-dashboard repository
+-- core-client-i18n-editor repository
+-- core-client-remote-repos repository
 -- core-client-settings repository
 -- core-client-workspace repository
--- core-client-content repository
--- core-client-remote-repos repository
--- core-client-i18n-editor repository
+-- desktop-app-liminal
+-- resource-core
+-- webfonts-core
 ```
 
 *It Should Just Work* if your pankosmia directory is under `repos` under your user directory, ie `/home/myname/repos/pankosmia` in Linux.
@@ -58,7 +58,6 @@ Linux:
 cd linux/scripts
 ./build_and_run.bsh
 ```
-(may need chmod +x build_and_run.bsh)
 
 Windows:
 ```text
@@ -74,10 +73,11 @@ chmod +x build_and_run.zsh
 
 ## Building for release)
 
-1. Delete the contents of local_server/target/release
-2. Run the server in dev mode.
-3. Stop the server (optional)
-4. Then proceed below.
+1. cd local_server
+2. cargo clean
+3. Run the server in dev mode.
+4. Stop the server (optional)
+5. Then proceed below.
 
 Linux:
 ```text

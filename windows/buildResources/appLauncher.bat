@@ -1,5 +1,5 @@
 SET APP_RESOURCES_DIR=.\lib\
-call "" "%~dp0\bin\server.exe"
+start "" "%~dp0\bin\server.exe"
 
 timeout /t 1 /nobreak >nul
 

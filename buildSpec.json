@@ -1,7 +1,7 @@
 {
   "app": {
-    "name": "liminal",
-    "version": "0.2.4"
+    "name": "Liminal",
+    "version": "0.2.9"
   },
   "bin": {
     "src": "../../local_server/target/release/local_server"
@@ -16,21 +16,21 @@
       "targetName": "templates"
     },
     {
-      "src": "../../../webfonts-core",
+      "src": "../../../webfonts-core/",
       "targetName": "webfonts"
     },
     {
       "src": "../buildResources/setup",
       "targetName": "setup"
     }
-  ],
+   ],
   "libClients": [
-    "../../../core-client-dashboard",
-    "../../../core-client-settings",
-    "../../../core-client-remote-repos",
     "../../../core-client-content",
-    "../../../core-client-workspace",
-    "../../../core-client-i18n-editor"
+    "../../../core-client-dashboard",
+    "../../../core-client-i18n-editor",
+    "../../../core-client-remote-repos",
+    "../../../core-client-settings",
+    "../../../core-client-workspace"
   ],
   "favIcon": "../../globalBuildResources/favicon.ico",
   "theme": "../../globalBuildResources/theme.json"

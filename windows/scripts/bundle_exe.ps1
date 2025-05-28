@@ -1,3 +1,4 @@
+@echo off
 cd ..\..\
 If (Test-Path releases\windows\*.exe) {
 Remove-Item releases\windows\*.exe }

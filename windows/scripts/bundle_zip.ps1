@@ -4,6 +4,7 @@
 
 # run from pankosmia\desktop-app-liminal\windows\scripts directory in powershell by:  .\bundle_zip.ps1
 
+@echo off
 ECHO ""
 ECHO "Version is $env:APP_VERSION"
 ECHO ""

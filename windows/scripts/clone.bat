@@ -1,26 +1,65 @@
+@echo off
+setlocal ENABLEDELAYEDEXPANSION
+
+set countassets=0
+for /f "tokens=*" %%a in (..\..\app_assets.txt) do (
+  set /a countassets+= 1
+  set var!countassets!=%%a
+)
+REM For catching repeated repos every third row
+set countdedupe=3
+for /f "tokens=*" %%b in (..\..\app_assets.txt) do (
+  set /a countdedupe+= 1
+  set dedupe!countdedupe!=%%b
+)
 cd ..\..\..\
-if not exist webfonts-core (
-	git clone https://github.com/pankosmia/webfonts-core.git
+for /l %%a in (1,1,%countassets%) do (
+  REM Remove spaces from app_assets.txt
+  set var%%a=!var%%a: =!
+  REM Don't clone targetPath or targetName lines.
+  if not "!var%%a:~0,11!" == "targetPath:" (
+    if not "!var%%a:~0,11!" == "targetName:" (
+      REM Catch repeated repos
+      if %%a gtr 2 (
+        if not "!var%%a!" == "!dedupe%%a!" (
+          echo Asset: !var%%a!
+          if not exist !var%%a! (
+            git clone https://github.com/pankosmia/!var%%a!.git
+          ) else (
+            echo "Directory already exists; Not cloned."
+          )
+        )
+      ) else (
+        echo Asset: !var%%a!
+        if not exist !var%%a! (
+          git clone https://github.com/pankosmia/!var%%a!.git
+        ) else (
+          echo "Directory already exists; Not cloned."
+        )
+      )
+    )
+  )
 )
-if not exist resource-core (
-	git clone https://github.com/pankosmia/resource-core.git
+cd desktop-app-liminal\windows\scripts
+
+set countclients=0
+for /f "tokens=*" %%c in (..\..\app_clients.txt) do (
+  set /a countclients+= 1
+  set var!countclients!=%%c
 )
-if not exist core-client-content (
-	git clone https://github.com/pankosmia/core-client-content.git
-)
-if not exist core-client-dashboard (
-	git clone https://github.com/pankosmia/core-client-dashboard.git
-)
-if not exist core-client-i18n-editor (
-	git clone https://github.com/pankosmia/core-client-i18n-editor.git
-)
-if not exist core-client-remote-repos (
-	git clone https://github.com/pankosmia/core-client-remote-repos.git
-)
-if not exist core-client-settings (
-	git clone https://github.com/pankosmia/core-client-settings.git
-)
-if not exist core-client-workspace (
-	git clone https://github.com/pankosmia/core-client-workspace.git
+cd ..\..\..\
+for /l %%c in (1,1,%countclients%) do (
+  REM Don't clone "exclude_from_menu:" lines
+  if not "!var%%c:~0,18!" == "exclude_from_menu:" (
+    REM Remove commas
+    set var%%c=!var%%c:^,=!
+    echo Client: !var%%c!
+    echo !var%%c!
+    if not exist !var%%c! (
+      git clone https://github.com/pankosmia/!var%%c!.git
+    ) else (
+      echo "Directory already exists; Not cloned."
+    )
+  )
 )
 cd desktop-app-liminal\windows\scripts

@@ -94,12 +94,12 @@ To setup config files using one of the scripts that follow, first update the fol
 
 
 #### Config scripts:
-| Linux | Windows | MacOS |
-|-------|---------|-------|
-| | `/windows/scripts/app_setup.bat` | |
+Run from the provided location:
+| Description | Linux | Windows | MacOS |
+|-------------|-------|---------|-------|
+| Uses app_name.txt, app_version.txt, app_assets.txt, and app_clients.txt to generate/rebuild/replace app_setup.json, buildSpec.json, and i18nPatch.json| | `/windows/scripts/app_setup.bat` | |
 
 #### Setup scripts:
-
 Run from the provided location:
 | Description | Linux | Windows | MacOS |
 |-------|-------|---------|-------|

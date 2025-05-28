@@ -1,3 +1,4 @@
+@echo off
 call .\build_server.bat
 echo "Running..."
 cd ..\build

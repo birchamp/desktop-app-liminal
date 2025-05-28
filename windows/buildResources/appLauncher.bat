@@ -1,3 +1,4 @@
+@echo off
 SET APP_RESOURCES_DIR=.\lib\
 start "" "%~dp0\bin\server.exe"
 

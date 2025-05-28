@@ -30,23 +30,10 @@ npm run build
 
 ## Environment requirements for this repo (desktop-app-liminal)
 
-### Tested on Ubuntu 24.04 with:
-- npm 9.2.0
-- node 18.19.1
-- rustc 1.83.0 -- curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-### Tested on Windows 11 with:
-- npm 10.7.0
-- node 18.20.4
-- rustc 1.83.0 -- See https://www.rust-lang.org/tools/install
-- cmake 3.31.0 -- Version 3 is required. See https://cmake.org/download/
-
-### Tested on MacOS with:
-- npm 10.7.0 (tested on Monterey)
-- npm 10.8.2 (tested on Sequoia)
-- node 18.20.4
-- rustc 1.86.0 -- curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-- OpenSSL 3.5.0 -- brew install openssl
+Tested on:
+| Ubuntu 24.04 with: | Windows 11 with: | MacOS with: |
+|-------|---------|-------|
+|- npm 9.2.0<br />- node 18.19.1<br />- rustc 1.83.0 -- `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \| sh` | - npm 10.7.0<br />- node 18.20.4<br />- rustc 1.83.0 -- See https://www.rust-lang.org/tools/install<br />- cmake 3.31.0 -- Version 3 is required. See https://cmake.org/download/ | - npm 10.7.0 (tested on Monterey)<br />- npm 10.8.2 (tested on Sequoia)<br />- node 18.20.4<br />- rustc 1.86.0 -- `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \| sh`<br />- OpenSSL 3.5.0 -- brew install openssl |
 
 ## Installing the server / builder (back to _this_ repo -- desktop-app-liminal)
 Scripts follow, though it can also be setup manually:<br />
@@ -81,7 +68,7 @@ See the Configuration section under Scripts, towards the bottom. Once configured
 | Linux | Windows | MacOS |
 |-------|---------|-------|
 | tgz:<br /><pre>cd ../build<br />tar cfz ../../releases/linux/liminal-linux.tgz .</pre> | exe, in powershell :<br />1. Install [Inno Setup](https://jrsoftware.org/isdl.php) -tested with v6.4.3<br />2. In powershell, enter the following where where 0.2.7 is the new version number:<br /><pre>cd ../install<br />$env:APP_VERSION = "0.2.7"<br />.\makeInstall.bat</pre> | zip:<br /><pre>cd ../build<br />chmod 755 liminal.zsh<br />zip -r ../../releases/macos/liminal-macos.zip *</pre> |
-| | Or, for zip, in powershell:<br /><pre>cd ../build<br />Compress-Archive * ../../releases/windows/liminal-windows.zip</pre><br />(Delete /releases/windows/liminal-windows.zip first, if it already exists.) | |
+| &nbsp; | Or, for zip, in powershell:<br /><pre>cd ../build<br />Compress-Archive * ../../releases/windows/liminal-windows.zip</pre><br />(Delete /releases/windows/liminal-windows.zip first, if it already exists.) | &nbsp; |
 
 ## Scripts
 

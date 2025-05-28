@@ -1,4 +1,5 @@
-if not exist ..\..\local_server\target\release\local_server (
+@echo off
+if not exist ..\..\local_server\target\release\local_server.exe (
     echo "Building local server"
     cd ..\..\local_server
     cargo build --release

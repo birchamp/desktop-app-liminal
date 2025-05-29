@@ -20,10 +20,10 @@ To upgrade:
      ./liminal.zsh
     Watch following load in the terminal window:
      OS = 'macos'
-     Rocket has launched from http://127.0.0.1:8000
-    This will also launch http://localhost:8000 in Firefox (if available) or in your default web browser.
+     Rocket has launched from http://127.0.0.1:19119
+    This will also launch http://localhost:19119 in Firefox (if available) or in your default web browser.
 13. Restore backup from step 1 to `~/panksomia_working/repos`
-14. Reconnect to http://localhost:8000 from Firefox (or an alternate web browser) as needed.
+14. Reconnect to http://localhost:19119 from Firefox (or an alternate web browser) as needed.
 
 First time use (not an upgrade):
 
@@ -43,8 +43,8 @@ First time use (not an upgrade):
      ./liminal.zsh
     Watch following load in the terminal window:
      OS = 'macos'
-     Rocket has launched from http://127.0.0.1:8000
-    This will also launch http://localhost:8000 in Firefox (if available) or in your default web browser.
-11. Reconnect to http://localhost:8000 from Firefox (or an alternate web browser) as needed.
+     Rocket has launched from http://127.0.0.1:19119
+    This will also launch http://localhost:19119 in Firefox (if available) or in your default web browser.
+11. Reconnect to http://localhost:19119 from Firefox (or an alternate web browser) as needed.
 
 Best viewed with a Graphite-enabled browser such as Firefox.

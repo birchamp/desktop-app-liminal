@@ -4,6 +4,7 @@ REM     Or in command prompt by: set APP_VERSION="0.2.6"
 
 REM run from pankosmia directory by:  .\desktop-app-liminal\windows\install\makeInstall.bat
 
+@echo off
 ECHO Version is %APP_VERSION%
 REM Set the path to ISCC.exe, modify it if necessary
 SET INNO_COMPILER_PATH="C:\Program Files (x86)\Inno Setup 6\ISCC.exe"

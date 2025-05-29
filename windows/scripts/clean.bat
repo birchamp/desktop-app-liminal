@@ -1,6 +1,6 @@
 @echo off
 if exist ..\build (
-  echo "Removing last server build"
+  echo "Removing last build environment"
   rmdir ..\build /s /q
 )
 

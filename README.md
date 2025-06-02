@@ -70,7 +70,7 @@ See the Configuration section under Scripts, towards the bottom. Once configured
 
 | Linux | Windows | MacOS |
 |-------|---------|-------|
-| tgz:<br />`cd ../build`<br />`tar cfz ../../releases/linux/liminal-linux.tgz .` | exe, in powershell :<br />1. Install [Inno Setup](https://jrsoftware.org/isdl.php) -tested with v6.4.3<br />2. In powershell, enter the following where where 0.2.7 is the new version number:<br />`cd ../install<br />$env:APP_VERSION = "0.2.7"`<br />`.\makeInstall.bat` | zip:<br />`cd ../build`<br />`chmod 755 liminal.zsh`<br />`zip -r ../../releases/macos/liminal-macos.zip *` |
+| tgz:<br />`cd ../build`<br />`tar cfz ../../releases/linux/liminal-linux.tgz .` | exe, in powershell :<br />1. Install [Inno Setup](https://jrsoftware.org/isdl.php) -tested with v6.4.3<br />2. In powershell, enter the following where where 0.2.7 is the new version number:<br />`cd ../install`<br />`$env:APP_VERSION = "0.2.7"`<br />`.\makeInstall.bat` | zip:<br />`cd ../build`<br />`chmod 755 liminal.zsh`<br />`zip -r ../../releases/macos/liminal-macos.zip *` |
 | &nbsp; | Or, for zip, in powershell:<br />`cd ../build`<br />`Compress-Archive * ../../releases/windows/liminal-windows.zip`<br />(Delete /releases/windows/liminal-windows.zip first, if it already exists.) | &nbsp; |
 
 ## Scripts

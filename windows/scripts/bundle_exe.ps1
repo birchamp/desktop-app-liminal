@@ -14,6 +14,10 @@ If (-Not (Test-Path ..\..\local_server\target\release\local_server.exe)) {
   exit
 }
 
+echo "`n"
+echo "Running app_setup to ensure version number consistency between buildSpec.json and this build bundle:"
+.\app_setup.bat
+
 cd ..\..\
 If (Test-Path releases\windows\*.exe) {
   echo "A previous windows .exe release exists. Removing..."

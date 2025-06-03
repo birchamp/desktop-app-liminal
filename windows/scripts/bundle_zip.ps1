@@ -4,6 +4,20 @@
 
 # run from pankosmia\desktop-app-liminal\windows\scripts directory in powershell by:  .\bundle_zip.ps1
 
+If (-Not (Test-Path ..\..\local_server\target\release\local_server.exe)) {
+  echo "`n"
+  echo "   ***************************************************************"
+  echo "   * IMPORTANT: Build the local server, then re-run this script! *"
+  echo "   ***************************************************************"
+  echo "`n"
+  pause
+  exit
+}
+
+echo "`n"
+echo "Running app_setup to ensure version number consistency between buildSpec.json and this build bundle:"
+.\app_setup.bat
+
 ECHO ""
 ECHO "Version is $env:APP_VERSION"
 ECHO ""
@@ -27,6 +41,14 @@ if (Test-Path ..\build) {
 echo "Assembling build environment"
 node build.js
 cd ..\build
-echo "Bundling. Wait for the powershell prompt after the compression progress bar finishes."
+echo "`n"
+echo "   *****************************************************************************************"
+echo "   *                                                                                       *"
+echo "   *                                          =====                                        *"
+echo "   * Bundling. Wait for the powershell prompt AFTER the compression progress bar finishes. *"
+echo "   *                                          =====                                        *"
+echo "   *                                                                                       *"
+echo "   *****************************************************************************************"
+echo "`n"
 Compress-Archive * ..\..\releases\windows\liminal-windows-$env:APP_VERSION.zip
 cd ..\scripts

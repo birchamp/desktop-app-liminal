@@ -106,6 +106,6 @@ Run from the provided location:
 | runs `clean.bat`, cargo build, and `node build.js` | | /windows/scripts/build_server.bat | |
 | Assembles the build environment (clients) and starts the server **(*)** | | /windows/scripts/run.bat | |
 | Assembles the build environment (clients), starts the server, and launches a browser **(*)** | | /windows/scripts/open.bat | |
-| on this repo runs `git checkout main`, `git pull`, and `npm install`, runs `node build.js`, then makes an exe installer **(*)** | | /windows/scripts/bundle_exe.ps1 | |
-| Deletes the last .zip release bundle if it it exists, on this repo runs `git checkout main`, `git pull`, and `npm install`, runs `node build.js`, then makes a zip release bundle **(*)** | | /windows/scripts/bundle_zip.ps1 | |
+| Deletes the last .exe release bundle if it it exists, runs `app_setup.bat` to ensure version consistency, then on this repo runs `git checkout main`, `git pull`, and `npm install`, runs `node build.js`, then makes an exe installer **(*)** | | /windows/scripts/bundle_exe.ps1 | |
+| Deletes the last .zip release bundle if it it exists, runs `app_setup.bat` to ensure version consistency, then on this repo runs `git checkout main`, `git pull`, and `npm install`, runs `node build.js`, then makes a zip release bundle **(*)** | | /windows/scripts/bundle_zip.ps1 | |
 **(*)** ***Ensure the server (build_server.bat) is current!***

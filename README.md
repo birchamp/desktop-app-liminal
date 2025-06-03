@@ -81,7 +81,7 @@ Config files must match clients and assets utilized. Scripts that write them are
 
 | Linux | Windows | MacOS |
 |-------|---------|-------|
-| <pre>buildSpec.json<br />/globalBuildResources/i18nPatch.json<br />/linux/buildResources/setup/app_setup.json</pre> | <pre>buildSpec.json<br />/globalBuildResources/i18nPatch.json<br />/windows/buildResources/setup/app_setup.json</pre> | <pre>buildSpec.json<br />/globalBuildResources/i18nPatch.json<br />/macos/buildResources/setup/app_setup.json</pre> 
+| <pre>buildSpec.json<br />/globalBuildResources/i18nPatch.json<br />/globalBuildResources/theme.json<br />/linux/buildResources/setup/app_setup.json</pre> | <pre>buildSpec.json<br />/globalBuildResources/i18nPatch.json<br />/globalBuildResources/theme.json<br />/windows/buildResources/setup/app_setup.json</pre> | <pre>buildSpec.json<br />/globalBuildResources/i18nPatch.json<br />/globalBuildResources/theme.json<br />/macos/buildResources/setup/app_setup.json</pre> 
 
 To setup config files using one of the scripts that follow, first update `app_config.env`.
 

@@ -9,6 +9,7 @@ echo      *   - \macos\buildResources\setup\app_setup.json   *
 echo      *   - \linux\buildResources\setup\app_setup.json   *
 echo      *   - \buildSpec.json                              *
 echo      *   - \globalBuildResources\i18nPatch.json         *
+echo      *   - \globalBuildResources\theme.json             *
 echo      ****************************************************
 echo.
 
@@ -19,6 +20,7 @@ setlocal ENABLEDELAYEDEXPANSION
 set clients=..\buildResources\setup\app_setup.json
 set spec=..\..\buildSpec.json
 set name=..\..\globalBuildResources\i18nPatch.json
+set theme=..\..\globalBuildResources\theme.json
 
 echo {> %name%
 echo   "branding": {>> %name%
@@ -29,6 +31,17 @@ echo       }>> %name%
 echo     }>> %name%
 echo   }>> %name%
 echo }>> %name%
+
+echo {> %theme%
+echo   "palette": {>> %theme%
+echo     "primary": {>> %theme%
+echo       "main": "%PRIMARY_COLOR%">> %theme%
+echo     },>> %theme%
+echo     "secondary": {>> %theme%
+echo       "main": "%SECONDARY_COLOR%">> %theme%
+echo     }>> %theme%
+echo   }>> %theme%
+echo }>> %theme%
 
 echo {> %spec%
 echo   "app": {>> %spec%

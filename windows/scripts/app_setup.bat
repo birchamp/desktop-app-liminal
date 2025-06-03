@@ -2,11 +2,7 @@
 
 echo.
 echo      ****************************************************
-echo      * This script uses:                                *
-echo      *   - \app_assets.txt,                             *
-echo      *   - \app_clients.txt,                            *
-echo      *   - \app_name.txt,                               *
-echo      *   - \app_version.txt                             *
+echo      * This script uses \app_config.env                 *
 echo      * to generate/rebuild/replace:                     *
 echo      *   - \windows\buildResources\setup\app_setup.json *
 echo      *   - \macos\buildResources\setup\app_setup.json   *
@@ -14,10 +10,11 @@ echo      *   - \linux\buildResources\setup\app_setup.json   *
 echo      *   - \buildSpec.json                              *
 echo      *   - \globalBuildResources\i18nPatch.json         *
 echo      ****************************************************
-setlocal ENABLEDELAYEDEXPANSION
+echo.
 
-set /p appname= <..\..\app_name.txt
-set /p ver= <..\..\app_version.txt
+for /F "tokens=1,2 delims==" %%a in (..\..\app_config.env) do set %%a=%%b
+
+setlocal ENABLEDELAYEDEXPANSION
 
 set clients=..\buildResources\setup\app_setup.json
 set spec=..\..\buildSpec.json
@@ -27,7 +24,7 @@ echo {> %name%
 echo   "branding": {>> %name%
 echo     "software": {>> %name%
 echo       "name": {>> %name%
-echo         "en": "%appname%">> %name%
+echo         "en": "%APP_NAME%">> %name%
 echo       }>> %name%
 echo     }>> %name%
 echo   }>> %name%
@@ -35,8 +32,8 @@ echo }>> %name%
 
 echo {> %spec%
 echo   "app": {>> %spec%
-echo     "name": "%appname%",>> %spec%
-echo     "version": "%ver%">> %spec%
+echo     "name": "%APP_NAME%",>> %spec%
+echo     "version": "%APP_VERSION%">> %spec%
 echo   },>> %spec%
 
 echo   "bin": {>> %spec%
@@ -44,28 +41,27 @@ echo     "src": "../../local_server/target/release/local_server">> %spec%
 echo   },>> %spec%
 
 echo   "lib": [>> %spec%
-set countassets=0
-for /f "tokens=*" %%a in (..\..\app_assets.txt) do (
-  SET /a countassets+= 1
-  set var!countassets!=%%a
+set count=0
+for /f "tokens=*" %%a in (..\..\app_config.env) do (
+  set /a count+= 1
 )
-REM *****HANDLE CASE OF resource-core x 2????*******
-REM *****HANDLE SPACES before scr and quotes?*******
-for /l %%a in (1,1,%countassets%) do (
-  REM Remove spaces from app_assets.txt
-  set var%%a=!var%%a: =!
-  if not "!var%%a:~0,11!" == "targetPath:" (
-    if not "!var%%a:~0,11!" == "targetName:" (
-      echo     {>> %spec%
-      set src=      "src": "../../../!var%%a!
-    )
+for /l %%a in (1,1,%count%) do (
+  if "!ASSET%%a!" NEQ "" (
+    REM Remove any spaces, e.g. trailing ones
+    set ASSET%%a=!ASSET%%a: =!
+    echo     {>> %spec%
+    set src=      "src": "../../../!ASSET%%a!
   )
-  if "!var%%a:~0,11!" == "targetPath:" (
-    set src=!src!!var%%a:~11!",
+  if "!ASSET%%a_PATH!" NEQ "" (
+    REM Remove any spaces, e.g. trailing ones
+    set ASSET%%a_PATH=!ASSET%%a_PATH: =!
+    set src=!src!!ASSET%%a_PATH!",
     echo !src!>> %spec%
   )
-  if "!var%%a:~0,11!" == "targetName:" (
-    echo       "targetName": "!var%%a:~11!">> %spec%
+  if "!ASSET%%a_NAME!" NEQ "" (
+    REM Remove any spaces, e.g. trailing ones
+    set ASSET%%a_NAME=!ASSET%%a_NAME: =!
+    echo       "targetName": "!ASSET%%a_NAME!">> %spec%
     echo     },>> %spec%
   )
 )
@@ -76,43 +72,27 @@ echo     }>> %spec%
 echo    ],>> %spec%
 
 echo   "libClients": [>> %spec%
-set countclients=0
-for /f "tokens=*" %%c in (..\..\app_clients.txt) do (
-  set /a countclients+= 1
-  set var!countclients!=%%c
-)
-
 echo {> %clients%
 echo   "clients": [>> %clients%
 
-for /l %%c in (1,1,%countclients%) do (
-  REM Remove spaces from app_clients.txt
-  set var%%c=!var%%c: =!
-  if "!var%%c:~-1!" == "," (
+REM Get total number of clients
+set clientcount=0
+for /l %%a in (1,1,%count%) do (
+  if "!CLIENT%%a!" NEQ "" (
+    set /a clientcount+= 1
+  )
+)
+for /l %%a in (1,1,%count%) do (
+  if "!CLIENT%%a!" NEQ "" (
+    REM Remove any spaces, e.g. trailing ones
+    set CLIENT%%a=!CLIENT%%a: =!
     echo     {>> %clients%
-    REM Remove the comma then add it back
-    set var%%c=!var%%c:^,=!
-    echo       "path": "%%%%PANKOSMIADIR%%%%/!var%%c:^,=!!",>> %clients%
-    if %%c==%countclients% (
-      echo     "../../../!var%%c!">> %spec%
-    ) else (
-      echo     "../../../!var%%c!",>> %spec%
-    )
-  ) else (
-    if "!var%%c:~0,18!" == "exclude_from_menu:" (
-      echo       "!var%%c:~0,18!": !var%%c:~18!>> %clients%
-    ) else (
-      echo     {>> %clients%
-      echo       "path": "%%%%PANKOSMIADIR%%%%/!var%%c!">> %clients%
-      if %%c==%countclients% (
-        echo     "../../../!var%%c!">> %spec%
-      ) else (
-        echo     "../../../!var%%c!",>> %spec%
-      )
-    )
-    if %%c==%countclients% (
+    echo       "path": "%%%%PANKOSMIADIR%%%%/!CLIENT%%a!">> %clients%
+    if %%a==%clientcount% (
+      echo     "../../../!CLIENT%%a!">> %spec%
       echo     }>> %clients%
     ) else (
+      echo     "../../../!CLIENT%%a!",>> %spec%
       echo     },>> %clients%
     )
   )
@@ -134,3 +114,5 @@ echo Copying \windows\buildResources\setup\app_setup.json to \linux\buildResourc
 copy ..\buildResources\setup\app_setup.json ..\..\linux\buildResources\setup\app_setup.json
 echo Copying \windows\buildResources\setup\app_setup.json to \macos\buildResources\setup\
 copy ..\buildResources\setup\app_setup.json ..\..\macos\buildResources\setup\app_setup.json
+
+endlocal

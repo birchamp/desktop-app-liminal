@@ -1,10 +1,10 @@
-REM This script requires APP_VERSION environment variable to be set:
-REM     You can do this in powershell by: $env:APP_VERSION = "0.2.6"
-REM     Or in command prompt by: set APP_VERSION="0.2.6"
-
-REM run from pankosmia directory by:  .\desktop-app-liminal\windows\install\makeInstall.bat
-
 @echo off
+REM This script requires the APP_VERSION environment variable to be defined in app_config.env
+
+REM run from pankosmia\desktop-app-[APP NAME]\windows\install\makeInstall.bat
+
+for /F "tokens=1,2 delims==" %%A in (..\..\app_config.env) do set %%A=%%B
+
 ECHO Version is %APP_VERSION%
 REM Set the path to ISCC.exe, modify it if necessary
 SET INNO_COMPILER_PATH="C:\Program Files (x86)\Inno Setup 6\ISCC.exe"

@@ -1,8 +1,18 @@
-# This script requires APP_VERSION environment variable to be set:
-#     You can do this in powershell by: $env:APP_VERSION = "0.2.6"
-#     Or in command prompt by: set APP_VERSION="0.2.6"
+# This script (the .\makeInstall.bat part) uses the APP_VERSION environment variable as defined in app_config.env
 
-# run from pankosmia\desktop-app-liminal\windows\scripts directory in powershell by:  .\bundle_zip.ps1
+# NOTE: This exe launcher leaves no way to turn off the server other than rebooting the computer or using Task Manager
+
+# run from pankosmia\desktop-app-[APP NAME]\windows\scripts directory in powershell by:  .\bundle_zip.ps1
+
+If (-Not (Test-Path ..\..\local_server\target\release\local_server.exe)) {
+  echo "`n"
+  echo "   ***************************************************************"
+  echo "   * IMPORTANT: Build the local server, then re-run this script! *"
+  echo "   ***************************************************************"
+  echo "`n"
+  pause
+  exit
+}
 
 cd ..\..\
 If (Test-Path releases\windows\*.exe) {

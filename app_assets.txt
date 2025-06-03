@@ -1,9 +1,0 @@
-resource-core
-  targetPath: /runtime_resources
-  targetName: app_resources
-resource-core
-  targetPath: /templates
-  targetName: templates
-webfonts-core
-  targetPath: /
-  targetName: webfonts

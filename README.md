@@ -83,31 +83,20 @@ Config files must match clients and assets utilized. Scripts that write them are
 |-------|---------|-------|
 | <pre>buildSpec.json<br />/globalBuildResources/i18nPatch.json<br />/linux/buildResources/setup/app_setup.json</pre> | <pre>buildSpec.json<br />/globalBuildResources/i18nPatch.json<br />/windows/buildResources/setup/app_setup.json</pre> | <pre>buildSpec.json<br />/globalBuildResources/i18nPatch.json<br />/macos/buildResources/setup/app_setup.json</pre> 
 
-To setup config files using one of the scripts that follow, first update the following 4 text files with no empty rows:
-- /app_name.txt:
-  - Enter the app name on row 1
-- /app_version.txt:
-  - Enter the version number on row 1
-- /app_assets.txt:
-  - Enter three rows for each asset repo, in the following order: 1. repo, 2. targetPath, 3. targetName.
-  - Keep repos with multiple assets together, listing the repos separately for each asset.
-- /app_clients.txt:
-  - One repo per row where included in the menu.
-  - To exclude from the menu, add a comma after the repo, then on the next line enter: `exclude_from_menu: true`
-
+To setup config files using one of the scripts that follow, first update `app_config.env`.
 
 #### Config scripts:
 Run from the provided location:
 | Description | Linux | Windows | MacOS |
 |-------------|-------|---------|-------|
-| Uses app_name.txt, app_version.txt, app_assets.txt, and app_clients.txt to generate/rebuild/replace app_setup.json, buildSpec.json, and i18nPatch.json| | `/windows/scripts/app_setup.bat` | |
+| Uses app_config.env to generate/rebuild/replace app_setup.json, buildSpec.json, and i18nPatch.json| | `/windows/scripts/app_setup.bat` | |
 
 #### Setup scripts:
 Run from the provided location:
 | Description | Linux | Windows | MacOS |
 |-------|-------|---------|-------|
-| Clones all repos listed in `/app_assets.txt` and `/app_clients.txt` if a directly by that name does not already exit | | /windows/scripts/clone.bat | |
-| For each repo listed in `/app_assets.txt`: git checkout main, git pull<br />For each repo listed in  `/app_clients.txt`: `git checkout main`, `git pull`, `npm install`, and `npm run build`.<br />***Dev's should build manually when testing branch(es).*** | | /windows/scripts/build_clients | |
+| Clones all repos in `/app_config.env` if a directly by that name does not already exit | | /windows/scripts/clone.bat | |
+| For each asset repo in `/app_config.env`: git checkout main, git pull<br />For each client repo in  `/app_config.env`: `git checkout main`, `git pull`, `npm install`, and `npm run build`.<br />***Dev's should build manually when testing branch(es).*** | | /windows/scripts/build_clients | |
 
 #### Usage scripts:
 

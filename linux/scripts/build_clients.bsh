@@ -51,4 +51,8 @@ for ((i=1;i<=count;i++)); do
     fi
   fi
 done
-cd desktop-app-liminal/windows/scripts
+
+# Use lower case app name in path
+APP_NAME=${APP_NAME,,}
+
+cd desktop-app-$APP_NAME/linux/scripts

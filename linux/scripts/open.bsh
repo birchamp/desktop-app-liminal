@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source ../../app_config.env
+
 set -e
 set -u
 
@@ -18,5 +20,5 @@ fi
 
 echo "Running and Opening Browser..."
 cd ../build
-chmod +x Liminal
-./Liminal
+chmod +x $APP_NAME
+./$APP_NAME

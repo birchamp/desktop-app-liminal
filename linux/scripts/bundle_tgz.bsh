@@ -56,5 +56,9 @@ echo "   *           ====                 *"
 echo "   *                                *"
 echo "   **********************************"
 echo
-tar cfz ../../releases/linux/liminal-linux-$APP_VERSION.tgz .
+
+# Use lower case app name in filename
+APP_NAME=${APP_NAME,,}
+
+tar cfz ../../releases/linux/$APP_NAME-linux-$APP_VERSION.tgz .
 cd ../scripts

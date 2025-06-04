@@ -70,7 +70,7 @@ See the Configuration section under Scripts, towards the bottom. Once configured
 
 | Linux | Windows | MacOS |
 |-------|---------|-------|
-| tgz:<br />`cd ../build`<br />`tar cfz ../../releases/linux/liminal-linux.tgz .` | exe, in powershell :<br />1. Install [Inno Setup](https://jrsoftware.org/isdl.php) -tested with v6.4.3<br />2. In powershell, enter the following where where 0.2.7 is the new version number:<br />`cd ../install`<br />`$env:APP_VERSION = "0.2.7"`<br />`.\makeInstall.bat` | zip:<br />`cd ../build`<br />`chmod 755 liminal.zsh`<br />`zip -r ../../releases/macos/liminal-macos.zip *` |
+| tgz:<br />`cd ../build`<br />`tar cfz ../../releases/linux/liminal-linux.tgz .` | exe, in powershell :<br />1. Install [Inno Setup](https://jrsoftware.org/isdl.php) -tested with v6.4.3<br />2. In powershell, enter the following where where 0.2.7 is the new version number:<br />`cd ../install`<br />`$env:APP_VERSION = "0.2.7"`<br />`.\makeInstall.bat` | zip:<br />`cd ../build`<br />`zip -r ../../releases/macos/liminal-macos.zip *` |
 | &nbsp; | Or, for zip, in powershell:<br />`cd ../build`<br />`Compress-Archive * ../../releases/windows/liminal-windows.zip`<br />(Delete /releases/windows/liminal-windows.zip first, if it already exists.) | &nbsp; |
 
 ## Scripts
@@ -89,23 +89,23 @@ To setup config files using one of the scripts that follow, first update `app_co
 Run from the provided location:
 | Description | Linux | Windows | MacOS |
 |-------------|-------|---------|-------|
-| Uses app_config.env to generate/rebuild/replace app_setup.json, buildSpec.json, and i18nPatch.json| | `/windows/scripts/app_setup.bat` | |
+| Uses app_config.env to generate/rebuild/replace app_setup.json, buildSpec.json, and i18nPatch.json| `/linux/scripts/app_setup.bsh` | `/windows/scripts/app_setup.bat` | `/macos/scripts/app_setup.zsh` |
 
 #### Setup scripts:
 Run from the provided location:
 | Description | Linux | Windows | MacOS |
 |-------|-------|---------|-------|
-| Clones all repos in `/app_config.env` if a directly by that name does not already exit | /linux/scripts/clone.bsh | /windows/scripts/clone.bat | |
-| For each asset repo in `/app_config.env`: git checkout main, git pull<br />For each client repo in  `/app_config.env`: `git checkout main`, `git pull`, `npm install`, and `npm run build`.<br />***Dev's should build manually when testing branch(es).*** | /linux/scripts/build_clients.bsh | /windows/scripts/build_clients | |
+| Clones all repos in `/app_config.env` if a directly by that name does not already exit | /linux/scripts/clone.bsh | /windows/scripts/clone.bat | /macos/scripts/clone.zsh |
+| For each asset repo in `/app_config.env`: git checkout main, git pull<br />For each client repo in  `/app_config.env`: `git checkout main`, `git pull`, `npm install`, and `npm run build`.<br />***Dev's should build manually when testing branch(es).*** | /linux/scripts/build_clients.bsh | /windows/scripts/build_clients.bat | /macos/scripts/build_clients.zsh |
 
 #### Usage scripts:
 
 | Description | Linux | Windows | MacOS |
 |-------|-------|---------|-------|
-| removes the build directory and runs `cargo clean` | /linux/scripts/clean.bsh | /windows/scripts/clean.bat | |
-| runs `clean.bat`, cargo build, and `node build.js` | /linux/scripts/build_server.bsh | /windows/scripts/build_server.bat | |
-| Assembles the build environment (clients) and starts the server **(*)** | /linux/scripts/run.bsh | /windows/scripts/run.bat | |
-| Assembles the build environment (clients), starts the server, and launches a browser **(*)** | /linux/scripts/open.bsh | /windows/scripts/open.bat | |
-| Deletes the last .zip release bundle if it it exists, runs `app_setup.bat` to ensure version consistency, then on this repo runs `git checkout main`, `git pull`, and `npm install`, runs `node build.js`, then makes a zip release bundle **(*)** | /linux/scripts/bundle_tgz.bsh | /windows/scripts/bundle_zip.ps1 | |
+| removes the build directory and runs `cargo clean` | /linux/scripts/clean.bsh | /windows/scripts/clean.bat | /macos/scripts/clean.zsh |
+| runs `clean.bat`, cargo build, and `node build.js` | /linux/scripts/build_server.bsh | /windows/scripts/build_server.bat | /macos/scripts/build_server.zsh |
+| Assembles the build environment (clients) and starts the server **(*)** | /linux/scripts/run.bsh | /windows/scripts/run.bat | /macos/scripts/run.zsh |
+| Assembles the build environment (clients), starts the server, and launches a browser **(*)** | /linux/scripts/open.bsh | /windows/scripts/open.bat | /macos/scripts/open.zsh |
+| Deletes the last .zip release bundle if it it exists, runs `app_setup.bat` to ensure version consistency, then on this repo runs `git checkout main`, `git pull`, and `npm install`, runs `node build.js`, then makes a zip release bundle **(*)** | /linux/scripts/bundle_tgz.bsh | /windows/scripts/bundle_zip.ps1 | /macos/scripts/bundle_zip.zsh |
 | Deletes the last .exe release bundle if it it exists, runs `app_setup.bat` to ensure version consistency, then on this repo runs `git checkout main`, `git pull`, and `npm install`, runs `node build.js`, then makes an exe installer **(*)** | | /windows/scripts/bundle_exe.ps1 | |
 **(*)** ***Ensure the server (build_server.bat) is current!***

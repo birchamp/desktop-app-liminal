@@ -16,7 +16,7 @@ if (fse.existsSync(BUILD_DIR)) {
 fse.mkdirSync(BUILD_DIR);
 // Load spec and extract some reusable information
 const spec = fse.readJsonSync(path.resolve(SPEC_PATH));
-const APP_NAME = spec['app']['name'];
+const APP_NAME = spec['app']['name'].toLowerCase();
 // Copy and rename launcher script
 fse.copySync(
     path.join(LINUX_BUILD_RESOURCES, "appLauncher.bsh"),

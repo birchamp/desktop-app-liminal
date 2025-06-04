@@ -20,5 +20,7 @@ fi
 
 echo "Running and Opening Browser..."
 cd ../build
+# Lower case app name in laucher
+APP_NAME=${APP_NAME,,}
 chmod +x $APP_NAME
 ./$APP_NAME

@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# set port environment variable
+export ROCKET_PORT=19119
+
 clear
 URL="http://localhost:19119"
 if [ -e /Applications/Firefox.app ]

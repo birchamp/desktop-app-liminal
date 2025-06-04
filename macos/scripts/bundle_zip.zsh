@@ -60,6 +60,6 @@ echo
 # Use lower case app name in filename
 APP_NAME=${APP_NAME:l}
 
-zip -r ../../releases/macos/$APP_NAME-macos--$APP_VERSION.zip * &> /dev/null
+zip -r ../../releases/macos/$APP_NAME-macos-$APP_VERSION.zip * &> /dev/null
 cd ../scripts
 chmod +x $APP_NAME.zsh

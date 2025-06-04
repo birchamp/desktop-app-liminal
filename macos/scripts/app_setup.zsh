@@ -122,10 +122,10 @@ echo "}">> $spec
 echo
 echo "/buildSpec.json generated/rebuilt/replaced"
 echo "/globalBuildResources/i18nPatch.json generated/rebuilt/replaced"
-echo "/linux/buildResources/setup/app_setup.json generated/rebuilt/replaced"
+echo "/macos/buildResources/setup/app_setup.json generated/rebuilt/replaced"
 echo
-echo "Copying /linux/buildResources/setup/app_setup.json to /windows/buildResources/setup/"
+echo "Copying /macos/buildResources/setup/app_setup.json to /windows/buildResources/setup/"
 cp ../buildResources/setup/app_setup.json ../../windows/buildResources/setup/app_setup.json
-echo "Copying /linux/buildResources/setup/app_setup.json to /macos/buildResources/setup/"
-cp ../buildResources/setup/app_setup.json ../../macos/buildResources/setup/app_setup.json
+echo "Copying /macos/buildResources/setup/app_setup.json to /linux/buildResources/setup/"
+cp ../buildResources/setup/app_setup.json ../../linux/buildResources/setup/app_setup.json
 

@@ -57,5 +57,8 @@ echo "   *                                          =====                       
 echo "   *                                                                                       *"
 echo "   *****************************************************************************************"
 echo "`n"
+
+# Use lower case app name in filename
+$APP_NAME = $APP_NAME.ToLower()
 Compress-Archive * ..\..\releases\windows\$APP_NAME-windows-$APP_VERSION.zip
 cd ..\scripts

@@ -16,7 +16,7 @@ if (fse.existsSync(BUILD_DIR)) {
 fse.mkdirSync(BUILD_DIR);
 // Load spec and extract some reusable information
 const spec = fse.readJsonSync(path.resolve(SPEC_PATH));
-const APP_NAME = spec['app']['name'] + ".bat";
+const APP_NAME = spec['app']['name'].toLowerCase() + ".bat";
 // Copy and rename launcher script
 fse.copySync(
     path.join(WINDOWS_BUILD_RESOURCES, "appLauncher.bat"),

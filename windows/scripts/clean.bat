@@ -11,7 +11,7 @@ goto :choice
 :server_on
 
 echo.
-echo "Turn the server off by exiting the terminal window in which it is running, then re-run this script while the server is off."
+echo Turn the server off by exiting the terminal window in which it is running, then re-run this script while the server is off.
 echo.
 pause
 exit
@@ -21,13 +21,17 @@ exit
 echo "Cleaning..."
 
 if exist ..\build (
-  echo "Removing last build environment"
+  echo Removing last build environment
   rmdir ..\build /s /q
 )
 
 if exist ..\..\local_server\target\release\local_server.exe (
-    echo "Cleaning local server"
+    echo Cleaning local server
     cd ..\..\local_server
     cargo clean
     cd ..\windows\scripts
 )
+
+echo.
+echo The local server and build environment have been cleaned.
+echo.

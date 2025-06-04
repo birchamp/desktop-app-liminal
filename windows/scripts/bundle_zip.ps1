@@ -57,5 +57,5 @@ echo "   *                                          =====                       
 echo "   *                                                                                       *"
 echo "   *****************************************************************************************"
 echo "`n"
-Compress-Archive * ..\..\releases\windows\liminal-windows-$env:APP_VERSION.zip
+Compress-Archive * ..\..\releases\windows\liminal-windows-$APP_VERSION.zip
 cd ..\scripts

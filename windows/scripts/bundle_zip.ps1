@@ -2,6 +2,15 @@
 
 # run from pankosmia\desktop-app-[APP NAME]\windows\scripts directory in powershell by:  .\bundle_zip.ps1
 
+get-content ..\..\app_config.env | foreach {
+  $name, $value = $_.split('=')
+  if ([string]::IsNullOrWhiteSpace($name) -or $name.Contains('#')) {
+    # skip empty or comment line in ENV file
+    return
+  }
+  Set-Variable -Name $name -Value $value
+}
+
 If (-Not (Test-Path ..\..\local_server\target\release\local_server.exe)) {
   echo "`n"
   echo "   ***************************************************************"
@@ -16,9 +25,9 @@ echo "`n"
 echo "Running app_setup to ensure version number consistency between buildSpec.json and this build bundle:"
 .\app_setup.bat
 
-ECHO ""
-ECHO "Version is $env:APP_VERSION"
-ECHO ""
+echo "`n"
+echo "Version is $APP_VERSION"
+echo "`n"
 
 cd ..\..\
 If (Test-Path releases\windows\*.zip) {

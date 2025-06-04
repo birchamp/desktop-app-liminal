@@ -15,11 +15,11 @@ for /l %%a in (1,1,%count%) do (
     set ASSET%%a=!ASSET%%a: =!
     echo "############################### BEGIN Asset %%a: !ASSET%%a! ###############################"
     if not exist !ASSET%%a! (
-      echo ""
+      echo.
       echo "****************************************************"
       echo "!ASSET%%a! does not exist; Run .\clone.bat"
       echo "****************************************************"
-      echo ""
+      echo.
     ) else (
       cd !ASSET%%a!
       call git checkout main

@@ -18,6 +18,8 @@ exit
 
 :server_off
 
+echo "Cleaning..."
+
 if exist ..\build (
   echo "Removing last build environment"
   rmdir ..\build /s /q

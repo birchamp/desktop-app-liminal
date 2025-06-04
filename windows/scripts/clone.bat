@@ -37,6 +37,6 @@ for /l %%a in (1,1,%count%) do (
     echo.
   )
 )
-cd desktop-app-liminal\windows\scripts
+cd desktop-app-%APP_NAME%\windows\scripts
 
 endlocal

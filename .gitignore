@@ -4,6 +4,9 @@ windows/build/
 macos/build/
 local_server/target
 
+#macos
+.DS_Store
+
 # Logs
 logs
 *.log

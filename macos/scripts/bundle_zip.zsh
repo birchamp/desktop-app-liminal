@@ -2,7 +2,7 @@
 
 # This script uses the APP_VERSION environment variable as defined in app_config.env
 
-# run from pankosmia\desktop-app-[APP NAME]/linux/scripts directory in powershell by:  ./bundle_tgz.bsh
+# run from pankosmia\desktop-app-[APP NAME]/macos/scripts directory in powershell by:  ./bundle_tgz.bsh
 
 source ../../app_config.env
 
@@ -37,7 +37,7 @@ echo "pull"
 git pull
 echo "npm install"
 npm install
-cd linux/scripts
+cd macos/scripts
 
 if [ -f ../build ]; then
   echo "Removing last build environment"
@@ -57,9 +57,9 @@ echo "   *                                *"
 echo "   **********************************"
 echo
 
+cd ../build
 # Use lower case app name in filename
 APP_NAME=${APP_NAME:l}
-
+chmod +x $APP_NAME.zsh
 zip -r ../../releases/macos/$APP_NAME-macos-$APP_VERSION.zip * &> /dev/null
 cd ../scripts
-chmod +x $APP_NAME.zsh

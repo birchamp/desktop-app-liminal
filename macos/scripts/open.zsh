@@ -20,5 +20,9 @@ fi
 
 echo "Running and Opening Browser..."
 cd ../build
-chmod +x $APP_NAME
-./$APP_NAME
+
+# Use lower case app name in filename
+APP_NAME=${APP_NAME:l}
+
+chmod +x $APP_NAME.zsh
+./$APP_NAME.zsh

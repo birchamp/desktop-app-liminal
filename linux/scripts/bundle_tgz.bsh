@@ -6,7 +6,7 @@
 
 source ../../app_config.env
 
-if [ -f ../../local_server/target/release/local_server.exe ]; then
+if [ ! -f ../../local_server/target/release/local_server ]; then
   echo
   echo "   ***************************************************************"
   echo "   * IMPORTANT: Build the local server, then re-run this script! *"
@@ -25,9 +25,10 @@ echo "Version is $APP_VERSION"
 echo
 
 cd ../../
-if [ -f releases/windows/*.tgz ]; then
+
+if [ $(ls releases/linux/*.tgz 2>/dev/null | wc -l) -gt 0 ]; then
   echo "A previous linux .tgz release exists. Removing..."
-  rm releases/windows/*.zip
+  rm releases/linux/*.tgz
 fi
 
 echo "checkout main"
@@ -55,5 +56,5 @@ echo "   *           ====                 *"
 echo "   *                                *"
 echo "   **********************************"
 echo
-tar cfz ../../releases/linux/liminal-linux.tgz .
+tar cfz ../../releases/linux/liminal-linux-$APP_VERSION.tgz .
 cd ../scripts

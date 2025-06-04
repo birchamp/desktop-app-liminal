@@ -95,17 +95,17 @@ Run from the provided location:
 Run from the provided location:
 | Description | Linux | Windows | MacOS |
 |-------|-------|---------|-------|
-| Clones all repos in `/app_config.env` if a directly by that name does not already exit | | /windows/scripts/clone.bat | |
-| For each asset repo in `/app_config.env`: git checkout main, git pull<br />For each client repo in  `/app_config.env`: `git checkout main`, `git pull`, `npm install`, and `npm run build`.<br />***Dev's should build manually when testing branch(es).*** | | /windows/scripts/build_clients | |
+| Clones all repos in `/app_config.env` if a directly by that name does not already exit | /linux/scripts/clone.bsh | /windows/scripts/clone.bat | |
+| For each asset repo in `/app_config.env`: git checkout main, git pull<br />For each client repo in  `/app_config.env`: `git checkout main`, `git pull`, `npm install`, and `npm run build`.<br />***Dev's should build manually when testing branch(es).*** | /linux/scripts/build_clients.bsh | /windows/scripts/build_clients | |
 
 #### Usage scripts:
 
 | Description | Linux | Windows | MacOS |
 |-------|-------|---------|-------|
-| removes the build directory and runs `cargo clean` | | /windows/scripts/clean.bat | |
-| runs `clean.bat`, cargo build, and `node build.js` | | /windows/scripts/build_server.bat | |
-| Assembles the build environment (clients) and starts the server **(*)** | | /windows/scripts/run.bat | |
-| Assembles the build environment (clients), starts the server, and launches a browser **(*)** | | /windows/scripts/open.bat | |
+| removes the build directory and runs `cargo clean` | /linux/scripts/clean.bsh | /windows/scripts/clean.bat | |
+| runs `clean.bat`, cargo build, and `node build.js` | /linux/scripts/build_server.bsh | /windows/scripts/build_server.bat | |
+| Assembles the build environment (clients) and starts the server **(*)** | /linux/scripts/run.bsh | /windows/scripts/run.bat | |
+| Assembles the build environment (clients), starts the server, and launches a browser **(*)** | /linux/scripts/open.bsh | /windows/scripts/open.bat | |
+| Deletes the last .zip release bundle if it it exists, runs `app_setup.bat` to ensure version consistency, then on this repo runs `git checkout main`, `git pull`, and `npm install`, runs `node build.js`, then makes a zip release bundle **(*)** | /linux/scripts/bundle_tgz.bsh | /windows/scripts/bundle_zip.ps1 | |
 | Deletes the last .exe release bundle if it it exists, runs `app_setup.bat` to ensure version consistency, then on this repo runs `git checkout main`, `git pull`, and `npm install`, runs `node build.js`, then makes an exe installer **(*)** | | /windows/scripts/bundle_exe.ps1 | |
-| Deletes the last .zip release bundle if it it exists, runs `app_setup.bat` to ensure version consistency, then on this repo runs `git checkout main`, `git pull`, and `npm install`, runs `node build.js`, then makes a zip release bundle **(*)** | | /windows/scripts/bundle_zip.ps1 | |
 **(*)** ***Ensure the server (build_server.bat) is current!***

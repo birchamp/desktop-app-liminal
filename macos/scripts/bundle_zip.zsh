@@ -26,9 +26,9 @@ echo
 
 cd ../../
 
-if [ $(ls releases/linux/*.tgz 2>/dev/null | wc -l) -gt 0 ]; then
-  echo "A previous linux .tgz release exists. Removing..."
-  rm releases/linux/*.tgz
+if [ $(ls releases/macos/*.zip 2>/dev/null | wc -l) -gt 0 ]; then
+  echo "A previous macos .zip release exists. Removing..."
+  rm releases/macos/*.zip
 fi
 
 echo "checkout main"

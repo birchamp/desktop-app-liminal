@@ -12,5 +12,5 @@ if not exist ..\build (
 )
 echo "Running and Opening Browser..."
 cd ..\build
-# The filename is lowercase and APP_NAME is most likely proper, but windows doesn't distinguish case in filenames.
+REM The filename is lowercase and APP_NAME is most likely proper, but windows doesn't distinguish case in filenames.
 .\%APP_NAME%.bat

@@ -30,3 +30,7 @@ if [ -f ../../local_server/target/release/local_server ]; then
     cargo clean
     cd ../linux/scripts
 fi
+
+echo
+echo "The local server and build environment have been cleaned."
+echo

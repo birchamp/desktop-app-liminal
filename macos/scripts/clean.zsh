@@ -22,7 +22,7 @@ if read -q "choice?Is the server off?[Y/N]? "; then
   echo
   echo
   echo "The local server and build environment have been cleaned."
-  echo 
+  echo
 
 else
   echo

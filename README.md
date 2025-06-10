@@ -1,4 +1,6 @@
-# desktop-app-liminal
+This is my own personal WIP for experimental 
+
+# desktop-app-liminal 
 This app is built on Pankosmia
 
 ## Environment requirements for this repo
